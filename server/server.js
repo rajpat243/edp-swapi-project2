@@ -1,11 +1,20 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = 3000; 
 
-app.get('/', (req, res) => {
-  res.send('Hello, MERN Stack!');
+
+app.get('/api/planets', (req, res) => {
+
+  const fakePlanet = {
+    name: "Test Planet",
+    climate: "temperate",
+    terrain: "mountains",
+    population: "unknown"
+  };
+
+  res.json(fakePlanet);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
