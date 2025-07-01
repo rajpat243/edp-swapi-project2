@@ -1,13 +1,7 @@
-#do these steps first
+#this script drops the existing collections and re imports them 
 
-# connect to the database
-## mongosh
+#run it from the folder whrere the json files are located using `bash mongo-swapi-imports.sh`
 
-# switch into the database
-## use swapi
-
-# drop the existing characters collection
-# db.characters.drop()
 
 mongoimport --uri mongodb://localhost:27017/swapi --collection characters --drop --file characters.json --jsonArray
 
