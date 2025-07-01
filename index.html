@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Characters</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+  <div>
+    <h1 id="characterH1">Star Wars Universe Character Lookup</h1>
+    <label for="characterSearchString">Who you looking for? <span class="small">(Regular expressions are cool
+        here)</span></label>
+    <input id="characterSearchString" oninput="filterCharacters()" autocomplete="off" />
+  </div>
+  <section id="charactersList">
+  </section>
+
+  <div>
+    <h1 id="filmH1">Star Wars Universe Film Lookup</h1>
+    <label for="filmSearchString">What you looking for? <span class="small">(Regular expressions are cool
+        here)</span></label>
+    <input id="filmSearchString" oninput="filterFilms()" autocomplete="off" />
+  </div>
+  <section id="filmsList">
+  </section>
+
+  <div>
+    <h1 id="starshipH1">Star Wars Universe Starship Class Lookup</h1>
+    <label for="starshipSearchString">Which starship class are you looking for? <span class="small">(Regular expressions are cool
+        here)</span></label>
+    <input id="starshipSearchString" oninput="filterStarships()" autocomplete="off" />
+  </div>
+  <section id="starshipsList">
+  </section>
+  
+    <h1 id="planetH1">Star Wars Universe Planet Lookup</h1>
+    <label for="planetSearchString">What you looking for? <span class="small">(Regular expressions are cool
+        here)</span></label>
+    <input id="planetsSearchString" oninput="filterPlanets()" autocomplete="off" />
+  </div>
+  <section id="planetsList">
+  </section>
+
+</body>
+
+</html>
