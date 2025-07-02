@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+<<<<<<< HEAD
 // import {Characters} from './Characters';
+=======
+
+import Characters from './componets/Characters';
+>>>>>>> cf9a2ad1b8be7210cbf8587bb54d78dfe13e2f6f
 
 
 // Inline CSS for background
