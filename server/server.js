@@ -79,7 +79,7 @@ app.get('/api/planets', async (req, res) => {
             return res.status(404).json({ message: 'Character not found' });
         }
 
-        res.json(character);  
+        return res.json(character);  // Return only the name
     } catch (error) {
         console.log("Error fetching character by ID:", error);
         res.status(500).send("Error in api.");
