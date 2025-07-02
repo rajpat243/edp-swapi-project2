@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const baseUrl = `mongodb://localhost:27017`;
+const baseUrl = `http://localhost:3000/api/film`;
 
 function useQuery() {
   return new URLSearchParams(window.location.search);

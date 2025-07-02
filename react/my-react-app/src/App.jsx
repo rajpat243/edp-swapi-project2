@@ -8,7 +8,6 @@ import CharacterPage from './components/CharacterPage';
 import PlanetPage from './components/PlanetPage';
 import FilmPage from './components/FilmPage';
 
-
 function App() {
   return (
     <Router>
@@ -21,6 +20,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;

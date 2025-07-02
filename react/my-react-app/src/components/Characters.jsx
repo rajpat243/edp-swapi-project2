@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 
 const CharactersList = () => {
-  const [characters, setCharacters] = useState([]);  
+  const [characters, setCharacters] = useState([]);  // State to store characters
   const [error, setError] = useState(null); 
   const navigate = useNavigate(); 
 
@@ -17,6 +17,7 @@ const CharactersList = () => {
       });
   }, []); 
 
+  // Handle click event to navigate to character details page
   const handleCharacterClick = (id) => {
     navigate(`/character/${id}`);  
   };
@@ -27,6 +28,7 @@ const CharactersList = () => {
     <div>
       <h1><strong>Star Wars Universe Lookup</strong></h1>
       <h2><strong>Who are you looking for?</strong></h2>
+
   
       <div>
         {characters.length === 0 ? (
