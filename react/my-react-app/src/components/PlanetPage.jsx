@@ -38,46 +38,30 @@ const PlanetPage = () => {
     </svg>
     
     
-    <p className="text-sm font-normal text-gray-500 dark:text-gray-400">Planetary data...</p>
-    
-    <ul className="my-4 space-y-3">
-      <li>
-        <a href="#" className="flex items-center p-3 font-bold ">
-          <p className='text-black'>climate: {planet?.climate}</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg ">
-          <p className='text-black'>Surface:  {planet?.surface_water}</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg ">
+    <p style={{ margin: 20, fontSize: 40, }}>Planetary data</p>
+      <ul style={{ margin: 20, fontSize: 20, listStyleType: 'none' }}> {/* Remove bullet points */}
+        <li>
+          <p className='text-black'>Climate: {planet?.climate}</p>
+        </li>
+        <li>
+          <p className='text-black'>Surface: {planet?.surface_water}</p>
+        </li>
+        <li>
           <p className='text-black'>Diameter: {planet?.diameter}m</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 font-bold text-gray-900 rounded-lg ">
+        </li>
+        <li>
           <p className='text-black'>Terrain: {planet?.terrain}</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg ">
+        </li>
+        <li>
           <p className='text-black'>Orbital Period: {planet?.orbital_period}</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg ">
+        </li>
+        <li>
           <p className='text-black'>Rotation Period: {planet?.rotation_period}</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg ">
+        </li>
+        <li>
           <p className='text-black'>Population: {planet?.population}</p>
-        </a>
-      </li>
-    </ul>
-    
+        </li>
+      </ul>
     </div>
   )
 }

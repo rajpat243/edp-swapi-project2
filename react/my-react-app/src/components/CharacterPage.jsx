@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import InfoCard from './InfoCard';
 
 const CharacterPage = () => {
@@ -7,6 +7,7 @@ const CharacterPage = () => {
   const [characterFilms, setCharacterFilms] = useState([]);
   const [homeworld, setHomeworld] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,27 +33,49 @@ const CharacterPage = () => {
 
   if (!character) return <div>Loading character...</div>;
 
+  const buttonStyle = {
+    cursor: 'pointer',
+    backgroundColor: '#FFD700', // Yellow background
+    color: '#000000', // Black text color for contrast
+    border: 'none',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    margin: '5px',
+    textAlign: 'center',
+    display: 'inline-block',
+  };
+
   return (
     <div className='characters'>
       <InfoCard info={character} />
 
       <div className='characters'>
         {homeworld && (
-          <div>
-            <strong>Homeworld: </strong>{' '}
-            <Link to={`/planet/${character.homeworld}`}>
-              {homeworld.name}
-            </Link>
+          <div style={{ marginTop: '20px' }}>
+            <strong>Homeworld:</strong>
+            <div>
+              <span
+                style={buttonStyle}
+                onClick={() => navigate(`/planet/${character.homeworld}`)}
+              >
+                {homeworld?.name}
+              </span>
+            </div>
           </div>
         )}
 
         {characterFilms.length > 0 && (
           <div style={{ marginTop: '20px' }}>
             <strong>Appears in Films:</strong>
-            <ul>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
               {characterFilms.map((film) => (
                 <li key={film.id}>
-                  <Link to={`/film/${film.id}`}>{film.title}</Link>
+                  <span
+                    style={buttonStyle}
+                    onClick={() => navigate(`/film/${film.id}`)}
+                  >
+                    {film.title}
+                  </span>
                 </li>
               ))}
             </ul>

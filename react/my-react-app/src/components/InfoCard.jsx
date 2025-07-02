@@ -1,19 +1,49 @@
-import React from "react";
-import '../App.css'
+import React from 'react';
 
 const InfoCard = ({ info }) => {
+
+  const styles = {
+    info: {
+      padding: '20px',
+    },
+    title: {
+      padding: '20px',
+      fontSize: '2rem',
+      color: '#FFE81F', 
+    },
+    card: {
+      backgroundColor: '#fff',
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    },
+    cardContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingBottom: '10px',
+    },
+    textSm: {
+      fontSize: '0.875rem',
+      color: '#666',
+    },
+    darkTextSm: {
+      color: '#ccc',
+    },
+  };
+
   return (
-    <div class="info">
-    <h1 style={{padding: "20px"}}>{info.name}</h1>
-      <div className=" bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <div className="flex flex-col items-center pb-10">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            Born:  {info.birth_year}
+    <div style={styles.info}>
+      <h1 style={styles.title}>{info.name}</h1>
+      <div style={styles.card}>
+        <div style={styles.cardContent}>
+          <span style={styles.textSm}>
+            Born: {info.birth_year}
           </span>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span style={styles.textSm}>
             Height: {info.height} cm
           </span>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span style={styles.textSm}>
             Mass: {info.mass} kg
           </span>
         </div>
@@ -21,6 +51,5 @@ const InfoCard = ({ info }) => {
     </div>
   );
 };
-
 
 export default InfoCard;

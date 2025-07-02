@@ -56,15 +56,15 @@ const FilmPage = () => {
 
   return (
 
-    <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+    <div className="filmslist">
       
-      <h5 className="text-xl font-semibold mb-2">{film?.title}</h5>
+      <h5 style={{margin:20, fontSize: 50 }}>{film?.title}</h5>
       
     <div>
-      <h5 >{film?.opening_crawl}</h5>
+      <h5 style={{margin:20, fontSize: 15 }} >{film?.opening_crawl}</h5>
 
-      <div className="flex justify-between bg-gray-200 rounded-full shadow-md p-2 max-w-sm mx-auto mb-6 mt-6">
-          <div>
+      <div >
+          <div style={{margin:20, fontSize: 20 }}>
             
             {film?.director}
           </div>
@@ -77,7 +77,7 @@ const FilmPage = () => {
     <div className="flex justify-between gap-12 p-6 flex-wrap">
       
       <div className="flex-1 min-w-[250px]">
-        <h5 className="text-xl font-semibold mb-2">Appearing Characters: </h5>
+        <h5 style={{margin:20, }}>Appearing Characters: </h5>
         <div>
           {filmCharacters.map((item) => (
             <button key={item.id} onClick={() => handleCharacterClick(item.id)}> {item.name} </button>
@@ -86,7 +86,7 @@ const FilmPage = () => {
       </div>
 
       <div className="flex-1 min-w-[250px]">
-        <h5 className="text-xl font-semibold mb-2">Planets: </h5>
+        <h5 style={{margin:20, }}>Planets: </h5>
         <div>
           {filmPlanets.map((item) => (
             <button key={item.id} onClick={() => handlePlanetClick(item.id)}> {item.name} </button>
