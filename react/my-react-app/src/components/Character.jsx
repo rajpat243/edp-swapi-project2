@@ -34,13 +34,13 @@ function Character() {
     }
 
     async function fetchHomeworld(character) {
-      const url = `/api/planets/:id/characters`;
+      const url = `${baseUrl}/api/planets/${id}/characters`;
       const planet = await fetch(url).then((res) => res.json());
       return planet;
     }
 
     async function fetchFilms(character) {
-      const url = `/api/characters/:id/films`;
+      const url = `${baseUrl}/api/characters/${id}/films`;
       const films = await fetch(url).then((res) => res.json());
       return films;
     }
