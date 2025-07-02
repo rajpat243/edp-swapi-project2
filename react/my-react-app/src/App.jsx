@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Characters from './componets/Characters';
+import Character from './components/Character';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
 
-    <Characters/>
+    <Character/>
     // <>
     //   <div>
     //     <a href="https://vite.dev" target="_blank">

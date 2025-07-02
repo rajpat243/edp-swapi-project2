@@ -2,6 +2,7 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
+import cors from 'cors'
 
 dotenv.config();
 
@@ -11,6 +12,10 @@ const port = 3000;
 
 const url = process.env.MONGO_DB_URL;
 const dbName = process.env.MONGO_DB;
+
+app.use(cors())
+
+
 
 
 app.get('/api/characters', async (req, res) => {

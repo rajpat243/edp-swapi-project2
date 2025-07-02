@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 
-const baseUrl = `mongodb://localhost:27017`;
+const baseUrl = `http://localhost:3000`;
 
-function CharacterDetails() {
-  const [character, setCharacter] = useState(null);
-  const [loading, setLoading] = useState(true);
-  
-  function getIdFromSearch() {
-    const sp = new URLSearchParams(window.location.search);
-    return sp.get("id");
-  }
+function Character() {
+
+  const id = useParams()
+  const [character, setCharacter] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const id = getIdFromSearch();
+    
+
+
     async function getCharacter(id) {
       let char;
       try {
@@ -28,7 +27,8 @@ function CharacterDetails() {
     }
 
     async function fetchCharacter(id) {
-      let characterUrl = `/api/characters/:id`;
+      let characterUrl = `${baseUrl}/api/characters/${id}`;
+      console.log({id})
       return await fetch(characterUrl).then((res) => res.json());
     }
 
@@ -95,4 +95,4 @@ function CharacterDetails() {
   );
 }
 
-export default CharacterDetails;
+export default Character;
