@@ -5,8 +5,7 @@ const baseUrl = `mongodb://localhost:27017`;
 function CharacterDetails() {
   const [character, setCharacter] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // Helper to get id from URL query params
+  
   function getIdFromSearch() {
     const sp = new URLSearchParams(window.location.search);
     return sp.get("id");
@@ -20,7 +19,6 @@ function CharacterDetails() {
         char = await fetchCharacter(id);
         char.homeworld = await fetchHomeworld(char);
         char.films = await fetchFilms(char);
-        char.species = await fetchSpecies(char);
         setCharacter(char);
       } catch (ex) {
         console.error(`Error reading character ${id} data.`, ex.message);
@@ -45,12 +43,6 @@ function CharacterDetails() {
       const films = await fetch(url).then((res) => res.json());
       return films;
     }
-
-   // async function fetchSpecies(character) {
-   //   const url = `${baseUrl}/films/${character?.id}/species`;
-   //   const species = await fetch(url).then((res) => res.json());
-   //   return species;
- //   }
 
     getCharacter(id);
   }, []);
@@ -89,22 +81,12 @@ function CharacterDetails() {
           )}
         </span>
       </p>
-      <p>
-        <strong>Species:</strong>{" "}
-        <span id="species">
-          {character?.species && (
-            <a href={`/species.html?id=${character.species.id}`}>
-              {character.species.name}
-            </a>
-          )}
-        </span>
-      </p>
       <div id="films">
         <strong>Films:</strong>
         <ul>
           {character?.films?.map((film) => (
             <li key={film.id}>
-              <a href={`/film.html?id=${film.id}`}>{film.title}</a>
+              <a href={`/api/films`}>{film.title}</a>
             </li>
           ))}
         </ul>
