@@ -25,12 +25,12 @@ const CharactersList = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <h1><strong>Star Wars Universe Lookup</strong></h1>
-      <h2><strong>Who are you looking for?</strong></h2>
+    <div style={{ textAlign: 'center', padding: '20px', color: '#FFD700' }}>
+      <h1 style={{ fontFamily: "'Star Jedi', sans-serif" }}><strong>Star Wars Universe Lookup</strong></h1>
+      <h2 style={{ fontFamily: "'Star Jedi', sans-serif" }}><strong>Who are you looking for?</strong></h2>
 
   
-      <div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
         {characters.length === 0 ? (
           <div>No characters available</div>
         ) : (
@@ -38,7 +38,7 @@ const CharactersList = () => {
             <div
               key={character.id}
               onClick={() => handleCharacterClick(character.id)}  
-              style={{ cursor: 'pointer', margin: '10px', border: '1px solid black', padding: '10px' }}
+              style={{ cursor: 'pointer', margin: '10px', border: '1px solid black', padding: '10px' , backgroundColor: 'grey'}}
             >
               {character.name}
             </div>

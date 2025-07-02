@@ -33,13 +33,13 @@ const CharacterPage = () => {
   if (!character) return <div>Loading character...</div>;
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className='characters'>
       <InfoCard info={character} />
 
-      <div style={{ marginTop: '20px' }}>
+      <div className='characters'>
         {homeworld && (
           <div>
-            <strong>Homeworld:</strong>{' '}
+            <strong>Homeworld: </strong>{' '}
             <Link to={`/planet/${character.homeworld}`}>
               {homeworld.name}
             </Link>
