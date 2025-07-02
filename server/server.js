@@ -98,7 +98,7 @@ app.get('/api/planets/:id', async (req, res) => {
             return res.status(404).json({ message: 'Planet not found' });
         }
 
-        res.json(planet);  // Return only the name
+        res.json(planet);  
     } catch (error) {
         console.log("Error fetching planet by ID:", error);
         res.status(500).send("Error in api.");
@@ -117,7 +117,7 @@ app.get('/api/starships/:id', async (req, res) => {
             return res.status(404).json({ message: 'Starship not found' });
         }
 
-        res.json(starship);  // Return only the starship class
+        res.json(starship);  
     } catch (error) {
         console.log("Error fetching starship by ID:", error);
         res.status(500).send("Error in api.");
@@ -143,6 +143,38 @@ app.get('/api/starships/:id', async (req, res) => {
             res.status(500).send("Error in api.");
         }
     });
+    
+    app.get('/api/films/:id/characters', async (req, res) => {
+        const { id } = req.params;
+        try {
+            const client = await MongoClient.connect(url);
+            const db = client.db(dbName);
+            const filmCharacters = db.collection('films_characters');
+            const characters = db.collection('characters');
+    
+            const characterMappings = await filmCharacters.find({ film_id: parseInt(id) }).toArray();
+    
+            if (characterMappings.length === 0) {
+                return res.status(404).json({ message: 'No characters found for this film' });
+            }
+    
+            const characterIds = characterMappings.map(mapping => mapping.character_id);
+    
+            const charactersData = [];
+            for (const characterId of characterIds) {
+                const character = await characters.findOne({ id: characterId });
+                if (character) {
+                    charactersData.push(character.name);
+                }
+            }
+    
+            res.json(charactersData);
+        } catch (error) {
+            console.log('Error fetching characters for film:', error);
+            res.status(500).send("Error in api.");
+        }
+    });
+    
     
     
 
