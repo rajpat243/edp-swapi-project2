@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-const baseUrl = `http://localhost:9001/api`;
-
-function CharacterDetails() {
+function Characters() {
   const [character, setCharacter] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -12,26 +10,42 @@ function CharacterDetails() {
     return sp.get("id");
   }
 
+  const baseUrl = "http://localhost:3000"
+
   useEffect(() => {
     const id = getIdFromSearch();
-    async function getCharacter(id) {
-      let char;
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
+    fetchCharacter(id)
+      .then((data) => {
+        console.log("Character data:", data);
+        setCharacter(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching character:", error.message);
+        setCharacter(null);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+    async function fetchCharacter(id) {
       try {
-        char = await fetchCharacter(id);
-        char.homeworld = await fetchHomeworld(char);
-        char.films = await fetchFilms(char);
-        char.species = await fetchSpecies(char);
-        setCharacter(char);
-      } catch (ex) {
-        console.error(`Error reading character ${id} data.`, ex.message);
+        const response = await fetch(`${baseUrl}/api/characters/${id}`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
+        console.log("Character data:", data);
+        setCharacter(data);
+      } catch (error) {
+        console.error("Error fetching character:", error.message);
+        setCharacter(null);
       } finally {
         setLoading(false);
       }
-    }
-
-    async function fetchCharacter(id) {
-      let characterUrl = `/api/characters/:id`;
-      return await fetch(characterUrl).then((res) => res.json());
     }
 
     async function fetchHomeworld(character) {
@@ -46,11 +60,11 @@ function CharacterDetails() {
       return films;
     }
 
-   // async function fetchSpecies(character) {
-   //   const url = `${baseUrl}/films/${character?.id}/species`;
-   //   const species = await fetch(url).then((res) => res.json());
-   //   return species;
- //   }
+    // async function fetchSpecies(character) {
+    //   const url = `${baseUrl}/films/${character?.id}/species`;
+    //   const species = await fetch(url).then((res) => res.json());
+    //   return species;
+    //   }
 
     getCharacter(id);
   }, []);
@@ -113,4 +127,4 @@ function CharacterDetails() {
   );
 }
 
-export default CharacterDetails;
+export default Characters;
