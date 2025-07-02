@@ -1,209 +1,50 @@
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  margin: 0;
-  padding: 0;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-:root {
-  font-family: Arial, Helvetica, sans-serif;
-  --dark1: black;
-  --light1: white;
-  --dark2: black;
-  --light2: yellow;
-  background-color: var(--light1);
-  color: var(--light2);
-  background-image: url('assets/star-wars-background.jpeg');
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-button {
-  background-color: var(--light2);
-  color: var(--dark2);
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--dark2);
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-input {
-  display: block;
-  width: 95%;
-  font-weight: bold;
-  font-size: 1.1em;
-  line-height: 1.5em;
-  border: none;
-  border-bottom: 2px solid var(--dark2);
-  outline: none;
-  margin: 5px;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-label {
-  font-weight: bold;
-  font-size: 1.1em;
+.card {
+  padding: 2em;
 }
 
-.small {
-  font-size: small;
-  font-weight: normal;
+.read-the-docs {
+  color: #888;
 }
 
-#charactersList,
-#filmsList,
-#starshipsList,
-#planetsList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0;
-}
-
-#charactersList div,
-#filmsList div,
-#starshipsList div,
-#planetsList div {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid var(--dark2);
-  border-radius: 5px;
-  color: var(--dark2);
-  background-color: var(--light2);
-  font-weight: bold;
-}
-
-#filmH1,
-#characterH1,
-#starshipH1,
-#planetH1 {
-  margin-top: 50px;
-}
-
-h1#name,
-h1#title,
-h1#starship_class { 
-  margin: 50px; 
-}
-
-#generalInfo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border: 20px;
-}
-
-#generalInfo p {
+.info {
   padding: 20px;
-  margin: 10px;
-  color: var(--dark2);
-  background-color: var(--light2);
-}
-
-#generalInfo span {
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-section#planets,
-section#characters,
-section#starships, 
-section#films,
-section#people,
-section#pilots {
-  margin: 50px;
-}
-
-section#planets ul,
-section#characters ul,
-section#starships ul, 
-section#films ul,
-section#people ul,
-section#pilots ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-section#planets a,
-section#characters a,
-section#starships a, 
-section#films a,
-section#people a,
-section#pilots a {
-  display: inline-block;
-  text-decoration: none;
-  font-size: 1.1em;
-  background-color: var(--light2);
-  color: var(--dark2);
-  font-weight: bold;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--dark2);
-}
-
-/* styles.css */
-#starship-animation {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 300px; 
-  margin: 0; 
-  padding: 0; 
-}
-
-#starship {
-  position: absolute;
-  top: 20%; 
-  left: -300px; 
-  width: 300px; 
-  animation: fly-across 10s linear forwards;
-}
-
-section {
-  margin: 0; 
-  padding: 0; 
-}
-
-#films {
-  margin-top: 10px; 
-}
-
-@keyframes fly-across {
-  from {
-    left: -300px; /* Start off-screen */
-  }
-  to {
-    left: 100%; /* End off-screen */
-  }
-}
-
-div:has(#openingCrawl) {
-  perspective: 500px;
-}
-
-#openingCrawl {
-  perspective: 1000px;
-   p {
-    text-align: center;
-    padding: 20px;
-    width: 70%;
-    margin: 50px auto;
-    font-size: 2em;
-    color: yellow;
-    background-color: none;
-    overflow: hidden;
-    animation: 15s linear 0s 1 forwards crawl-up;
-  }
-}
-
-@keyframes crawl-up {
-  from {
-    transform: translateY(100%) rotateX(30deg);
-  }
-  to {
-    transform: translateY(0) rotateX(30deg);
-  }
+  background-color: #f9f9f9; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
 }
